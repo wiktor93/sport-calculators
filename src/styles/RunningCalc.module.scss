@@ -1,0 +1,31 @@
+.calcWrap {
+    max-width: 440px;
+    margin: 20px auto 50px;
+    padding: 0 20px;
+
+    .note {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .inputGroup {
+        margin: 25px 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        label {
+            flex-basis: 100%;
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+
+    .btnContainer {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.select {
+    flex-grow: 1;
+}
