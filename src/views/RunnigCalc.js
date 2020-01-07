@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Select from "react-select";
 
 import Button from "../components/Button";
@@ -6,16 +6,38 @@ import Input from "../components/Input";
 import Unit from "../components/Unit";
 import styles from "../styles/RunningCalc.module.scss";
 
-const RunningView = () => {
+const RunningCalc = () => {
   const [inputValues, setInputValue] = useState(defaultInputValues);
+
+  useEffect(() => {
+    // prettier-ignore
+    const { kilometers, meters, hours, minutes, seconds,speed } = inputValues;
+
+    const distance = +kilometers * 1000 + +meters;
+    const time = +hours * 3600 + +minutes * 60 + +seconds;
+    const paceTime = Math.floor((+time * 1000) / distance);
+    const avgSpeed =
+      distance && time ? (distance / 1000 / (time / 3600)).toFixed(2) : 0;
+
+    if (speed !== avgSpeed) {
+      setInputValue({
+        ...inputValues,
+        speed: avgSpeed,
+        paceMinutes: paceTime ? Math.floor(paceTime / 60) : null,
+        paceSeconds: paceTime ? Math.floor(paceTime % 60) : 0
+      });
+
+      console.log(inputValues);
+    }
+  }, [inputValues]);
+
   return (
     <>
       <section className={styles.calcWrap}>
         <h3>Runnning Pace Calculator</h3>
         <p className={styles.note}>
           With this calculator you can check what is the minimum average speed
-          and pace to achieve your goal. To get the result, you have to complete
-          minimally two fields.
+          and pace to achieve your goal.
         </p>
         <form>
           <div className={styles.inputGroup}>
@@ -32,7 +54,6 @@ const RunningView = () => {
               }
             />
             <Unit>km</Unit>
-
             <Input
               name="meters"
               value={inputValues.meters}
@@ -45,7 +66,6 @@ const RunningView = () => {
               }
             />
             <Unit>m</Unit>
-
             <Select
               className={styles.select}
               options={raceOptions}
@@ -89,36 +109,33 @@ const RunningView = () => {
             />
             <Unit>sec</Unit>
           </div>
-          <div className={styles.inputGroup}>
-            <label>Pace / kilometer </label>
-            <Input
-              name="paceMinutes"
-              value={inputValues.paceMinutes}
-              onChange={e =>
-                setInputValue({...inputValues, paceMinutes: e.target.value})
-              }
-            />
-            <Unit>min</Unit>
-            <Input
-              name="paceSeconds"
-              value={inputValues.paceSeconds}
-              onChange={e =>
-                setInputValue({...inputValues, paceSeconds: e.target.value})
-              }
-            />
-            <Unit>sec</Unit>
+          <div className={styles.resultsContainer}>
+            <div>
+              <h4>Pace</h4>
+              <div className={styles.result}>
+                <p>
+                  <span>
+                    {inputValues.paceMinutes ? inputValues.paceMinutes : "--"}
+                  </span>
+                  :
+                  <span>
+                    {inputValues.paceSeconds ? inputValues.paceSeconds : "--"}
+                  </span>{" "}
+                  /km
+                </p>
+              </div>
+            </div>
+            <div>
+              <h4>Speed</h4>
+              <div className={styles.result}>
+                <p>
+                  <span>{inputValues.speed ? inputValues.speed : "--"}</span>{" "}
+                  km/h
+                </p>
+              </div>
+            </div>
           </div>
-          <div className={styles.inputGroup}>
-            <label>Speed </label>
-            <Input
-              name="speed"
-              value={inputValues.speed}
-              onChange={e =>
-                setInputValue({...inputValues, speed: e.target.value})
-              }
-            />
-            <Unit>km/h</Unit>
-          </div>
+
           <div className={styles.btnContainer}>
             <Button
               onClick={e => {
@@ -126,7 +143,7 @@ const RunningView = () => {
                 setInputValue({...defaultInputValues});
               }}
             >
-              Reset
+              Reset <i className="fas fa-undo-alt"></i>
             </Button>
           </div>
         </form>
@@ -157,4 +174,4 @@ const raceOptions = [
   {value: "1", m: "", label: "1 km"}
 ];
 
-export default RunningView;
+export default RunningCalc;
