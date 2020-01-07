@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import Select from "react-select";
 
 import Button from "../components/Button";
 import Input from "../components/Input";
-import styles from "../styles/RunningCalc.module.scss";
 import Unit from "../components/Unit";
+import styles from "../styles/RunningCalc.module.scss";
 
 const RunningView = () => {
+  const [inputValues, setInputValue] = useState(defaultInputValues);
   return (
     <>
       <section className={styles.calcWrap}>
@@ -16,58 +17,144 @@ const RunningView = () => {
           and pace to achieve your goal. To get the result, you have to complete
           minimally two fields.
         </p>
-        <form action="">
+        <form>
           <div className={styles.inputGroup}>
             <label>Distance (type or select): </label>
-            <Input name="km" value="21" />
+            <Input
+              name="kilometers"
+              value={inputValues.kilometers}
+              onChange={e =>
+                setInputValue({
+                  ...inputValues,
+                  kilometers: e.target.value,
+                  selected: defaultInputValues.selected
+                })
+              }
+            />
             <Unit>km</Unit>
-            <Input name="m" value="098" />
+
+            <Input
+              name="meters"
+              value={inputValues.meters}
+              onChange={e =>
+                setInputValue({
+                  ...inputValues,
+                  meters: e.target.value,
+                  selected: defaultInputValues.selected
+                })
+              }
+            />
             <Unit>m</Unit>
+
             <Select
               className={styles.select}
               options={raceOptions}
               isSearchable={false}
+              placeholder={inputValues.selected}
+              value={inputValues.selected}
+              onChange={e =>
+                setInputValue({
+                  ...inputValues,
+                  kilometers: e.value,
+                  meters: e.m,
+                  selected: e.label
+                })
+              }
             />
           </div>
           <div className={styles.inputGroup}>
             <label>Time (your planned result): </label>
-            <Input name="hours" value="" />
+            <Input
+              name="hours"
+              value={inputValues.hours}
+              onChange={e =>
+                setInputValue({...inputValues, hours: e.target.value})
+              }
+            />
             <Unit>hrs</Unit>
-            <Input name="minutes" value="" />
+            <Input
+              name="minutes"
+              value={inputValues.minutes}
+              onChange={e =>
+                setInputValue({...inputValues, minutes: e.target.value})
+              }
+            />
             <Unit>min</Unit>
-            <Input name="seconds" />
+            <Input
+              name="seconds"
+              value={inputValues.seconds}
+              onChange={e =>
+                setInputValue({...inputValues, seconds: e.target.value})
+              }
+            />
             <Unit>sec</Unit>
           </div>
           <div className={styles.inputGroup}>
             <label>Pace / kilometer </label>
-            <Input name="pace-min" value="4" />
+            <Input
+              name="paceMinutes"
+              value={inputValues.paceMinutes}
+              onChange={e =>
+                setInputValue({...inputValues, paceMinutes: e.target.value})
+              }
+            />
             <Unit>min</Unit>
-            <Input name="pace-sec" value="15" />
+            <Input
+              name="paceSeconds"
+              value={inputValues.paceSeconds}
+              onChange={e =>
+                setInputValue({...inputValues, paceSeconds: e.target.value})
+              }
+            />
             <Unit>sec</Unit>
           </div>
           <div className={styles.inputGroup}>
             <label>Speed </label>
-            <Input name="speed" value="12.5" />
+            <Input
+              name="speed"
+              value={inputValues.speed}
+              onChange={e =>
+                setInputValue({...inputValues, speed: e.target.value})
+              }
+            />
             <Unit>km/h</Unit>
           </div>
+          <div className={styles.btnContainer}>
+            <Button
+              onClick={e => {
+                e.preventDefault();
+                setInputValue({...defaultInputValues});
+              }}
+            >
+              Reset
+            </Button>
+          </div>
         </form>
-
-        <div className={styles.btnContainer}>
-          <Button>Reset</Button>
-        </div>
       </section>
     </>
   );
 };
 
+const defaultInputValues = {
+  kilometers: "",
+  meters: "",
+  hours: "",
+  minutes: "",
+  seconds: "",
+  paceMinutes: "",
+  paceSeconds: "",
+  speed: "",
+  selected: "Select..."
+};
+
 const raceOptions = [
-  {value: "1", label: "1 km"},
-  {value: "5", label: "5 km"},
-  {value: "10", label: "10 km"},
-  {value: "15", label: "15 km"},
-  {value: "20", label: "25 km"},
-  {value: "21,098", label: "Half-marathon"},
-  {value: "42,195", label: "Marathon"}
+  {value: "42", m: "195", label: "Marathon"},
+  {value: "21", m: "98", label: "Half-marathon"},
+  {value: "20", m: "", label: "20 km"},
+  {value: "15", m: "", label: "15 km"},
+  {value: "10", m: "", label: "10 km"},
+  {value: "5", m: "", label: "5 km"},
+  {value: "1", m: "", label: "1 km"}
 ];
 
 export default RunningView;
