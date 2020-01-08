@@ -23,11 +23,15 @@ const RunningCalc = () => {
       setInputValue({
         ...inputValues,
         speed: avgSpeed,
-        paceMinutes: paceTime ? Math.floor(paceTime / 60) : null,
-        paceSeconds: paceTime ? Math.floor(paceTime % 60) : 0
+        paceMinutes: paceTime
+          ? Math.floor(paceTime / 60)
+          : defaultInputValues.paceMinutes,
+        paceSeconds: paceTime
+          ? paceTime % 60 < 10
+            ? `0${Math.floor(paceTime % 60)}`
+            : Math.floor(paceTime % 60)
+          : defaultInputValues.paceSeconds
       });
-
-      console.log(inputValues);
     }
   }, [inputValues]);
 
@@ -48,7 +52,7 @@ const RunningCalc = () => {
               onChange={e =>
                 setInputValue({
                   ...inputValues,
-                  kilometers: e.target.value,
+                  kilometers: Math.abs(e.target.value),
                   selected: defaultInputValues.selected
                 })
               }
@@ -60,7 +64,7 @@ const RunningCalc = () => {
               onChange={e =>
                 setInputValue({
                   ...inputValues,
-                  meters: e.target.value,
+                  meters: Math.abs(e.target.value),
                   selected: defaultInputValues.selected
                 })
               }
@@ -88,7 +92,7 @@ const RunningCalc = () => {
               name="hours"
               value={inputValues.hours}
               onChange={e =>
-                setInputValue({...inputValues, hours: e.target.value})
+                setInputValue({...inputValues, hours: Math.abs(e.target.value)})
               }
             />
             <Unit>hrs</Unit>
@@ -96,7 +100,10 @@ const RunningCalc = () => {
               name="minutes"
               value={inputValues.minutes}
               onChange={e =>
-                setInputValue({...inputValues, minutes: e.target.value})
+                setInputValue({
+                  ...inputValues,
+                  minutes: Math.abs(e.target.value)
+                })
               }
             />
             <Unit>min</Unit>
@@ -104,7 +111,10 @@ const RunningCalc = () => {
               name="seconds"
               value={inputValues.seconds}
               onChange={e =>
-                setInputValue({...inputValues, seconds: e.target.value})
+                setInputValue({
+                  ...inputValues,
+                  seconds: Math.abs(e.target.value)
+                })
               }
             />
             <Unit>sec</Unit>
@@ -114,14 +124,8 @@ const RunningCalc = () => {
               <h4>Pace</h4>
               <div className={styles.result}>
                 <p>
-                  <span>
-                    {inputValues.paceMinutes ? inputValues.paceMinutes : "--"}
-                  </span>
-                  :
-                  <span>
-                    {inputValues.paceSeconds ? inputValues.paceSeconds : "--"}
-                  </span>{" "}
-                  /km
+                  <span>{inputValues.paceMinutes}</span>:
+                  <span>{inputValues.paceSeconds}</span> /km
                 </p>
               </div>
             </div>
@@ -158,8 +162,8 @@ const defaultInputValues = {
   hours: "",
   minutes: "",
   seconds: "",
-  paceMinutes: "",
-  paceSeconds: "",
+  paceMinutes: "--",
+  paceSeconds: "--",
   speed: "",
   selected: "Select..."
 };
