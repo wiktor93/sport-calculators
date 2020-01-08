@@ -9,6 +9,10 @@ import styles from "../styles/RunningCalc.module.scss";
 const RunningCalc = () => {
   const [inputValues, setInputValue] = useState(defaultInputValues);
 
+  const handleInputs = (e, obj = {}) => {
+    setInputValue({...inputValues, [e.target.name]: e.target.value, ...obj});
+  };
+
   useEffect(() => {
     // prettier-ignore
     const { kilometers, meters, hours, minutes, seconds,speed } = inputValues;
@@ -50,11 +54,7 @@ const RunningCalc = () => {
               name="kilometers"
               value={inputValues.kilometers}
               onChange={e =>
-                setInputValue({
-                  ...inputValues,
-                  kilometers: Math.abs(e.target.value),
-                  selected: defaultInputValues.selected
-                })
+                handleInputs(e, {selected: defaultInputValues.selected})
               }
             />
             <Unit>km</Unit>
@@ -62,11 +62,7 @@ const RunningCalc = () => {
               name="meters"
               value={inputValues.meters}
               onChange={e =>
-                setInputValue({
-                  ...inputValues,
-                  meters: Math.abs(e.target.value),
-                  selected: defaultInputValues.selected
-                })
+                handleInputs(e, {selected: defaultInputValues.selected})
               }
             />
             <Unit>m</Unit>
@@ -91,31 +87,19 @@ const RunningCalc = () => {
             <Input
               name="hours"
               value={inputValues.hours}
-              onChange={e =>
-                setInputValue({...inputValues, hours: Math.abs(e.target.value)})
-              }
+              onChange={e => handleInputs(e)}
             />
             <Unit>hrs</Unit>
             <Input
               name="minutes"
               value={inputValues.minutes}
-              onChange={e =>
-                setInputValue({
-                  ...inputValues,
-                  minutes: Math.abs(e.target.value)
-                })
-              }
+              onChange={e => handleInputs(e)}
             />
             <Unit>min</Unit>
             <Input
               name="seconds"
               value={inputValues.seconds}
-              onChange={e =>
-                setInputValue({
-                  ...inputValues,
-                  seconds: Math.abs(e.target.value)
-                })
-              }
+              onChange={e => handleInputs(e)}
             />
             <Unit>sec</Unit>
           </div>
