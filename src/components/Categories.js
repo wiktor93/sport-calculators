@@ -18,13 +18,13 @@ const Categories = () => {
           Running
         </CalcPuzzle>
       </Link>
-
       <Link to="/swimming-calc">
         <CalcPuzzle icon={SwimmingIcon}>Swimming</CalcPuzzle>
       </Link>
       <Link to="/cycling-calc">
         <CalcPuzzle icon={CyclingIcon}>Cycling</CalcPuzzle>
       </Link>
+
       <CalcPuzzle icon={GymIcon}>Gym</CalcPuzzle>
       <CalcPuzzle icon={BenchPressIcon}>Bench Press</CalcPuzzle>
       <CalcPuzzle icon={HeartRateIcon}>Health</CalcPuzzle>

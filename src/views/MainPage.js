@@ -7,7 +7,7 @@ import RunnnigCalc from "./RunnigCalc";
 import SwimmingCalc from "./SwimmingCalc";
 import CyclingCalc from "./CyclingCalc";
 
-function MainView() {
+function MainPage() {
   return (
     <BrowserRouter>
       <div className="wrap">
@@ -24,4 +24,4 @@ function MainView() {
   );
 }
 
-export default MainView;
+export default MainPage;

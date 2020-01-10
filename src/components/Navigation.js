@@ -1,22 +1,46 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
-const Navigation = () => {
+import styles from "../styles/Navigation.module.scss";
+
+const Navigation = ({chosenCalculator}) => {
+  const [calculator, setCalculator] = useState("asd");
+
+  console.log(chosenCalculator);
+
+  useEffect(() => {
+    setCalculator(chosenCalculator);
+  }, [chosenCalculator]);
+
+  // const subCategory = () => {
+  //   return path ? (
+  //     <li>
+  //       <NavLink className={styles.item} to={path}>
+  //         {path}
+  //       </NavLink>
+  //     </li>
+  //   ) : null;
+  // };
+
   return (
-    <nav>
+    <nav className={styles.nav}>
       <ul>
         <li>
-          <Link to="/">Nav component - back</Link>
+          <NavLink className={styles.item} exact to="/">
+            Categories - {calculator}
+          </NavLink>
         </li>
-        {/* <li>
-        <Link to="/running">Running</Link>
-      </li>
-      <li>
-        <Link to="/swimming">Swimming</Link>
-      </li> */}
+        {/* {subCategory()} */}
       </ul>
     </nav>
   );
 };
 
-export default Navigation;
+const mapStateToProps = state => {
+  return {
+    chosenCalculator: state.chosenCalculator
+  };
+};
+
+export default connect(mapStateToProps, null)(Navigation);
