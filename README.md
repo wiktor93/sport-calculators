@@ -3,7 +3,7 @@
 Sport calculators for diffetend disciplines.
 
 ## Used technologies and libraries:
-* React, Hooks
+* React, Hooks, Redux
 * Sass
 
 ## Demo link:
