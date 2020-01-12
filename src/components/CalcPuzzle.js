@@ -1,15 +1,10 @@
 import React from "react";
-import {connect} from "react-redux";
 
-import {updateChosenCalculator} from "../actions/index";
 import styles from "../styles/CalcPuzzle.module.scss";
 
-const CalcPuzzle = ({children, icon, calcQ, updateChosenCalculator}) => {
+const CalcPuzzle = ({children, icon, calcQ}) => {
   return (
-    <div
-      className={styles.puzzle}
-      onClick={() => updateChosenCalculator(children)}
-    >
+    <div className={styles.puzzle}>
       <img src={icon} alt={children} />
 
       <h2>{children}</h2>
@@ -20,4 +15,4 @@ const CalcPuzzle = ({children, icon, calcQ, updateChosenCalculator}) => {
   );
 };
 
-export default connect(null, {updateChosenCalculator})(CalcPuzzle);
+export default CalcPuzzle;

@@ -1,6 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
+import {connect} from "react-redux";
+import {updateChosenCalculator} from "../actions/index";
+
 import CalcPuzzle from "./CalcPuzzle";
 import RunningIcon from "../img/running.svg";
 import SwimmingIcon from "../img/swimming.svg";
@@ -10,7 +13,8 @@ import BenchPressIcon from "../img/bench-press.svg";
 import HeartRateIcon from "../img/heart-rate.svg";
 import styles from "../styles/Categories.module.scss";
 
-const Categories = () => {
+const Categories = ({updateChosenCalculator}) => {
+  updateChosenCalculator();
   return (
     <div className={styles.categories}>
       <Link to="/running-calc">
@@ -32,4 +36,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default connect(null, {updateChosenCalculator})(Categories);

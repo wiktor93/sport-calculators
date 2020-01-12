@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from "react";
 import Select from "react-select";
+import {connect} from "react-redux";
 
+import {updateChosenCalculator} from "../actions/index";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Unit from "../components/Unit";
 import styles from "../styles/RunningCalc.module.scss";
 
-const RunningCalc = () => {
+const RunningCalc = ({updateChosenCalculator}) => {
+  updateChosenCalculator("Running");
   const [inputValues, setInputValue] = useState(defaultInputValues);
 
   const handleInputs = (e, obj = {}) => {
@@ -162,4 +165,4 @@ const raceOptions = [
   {value: "1", m: "", label: "1 km"}
 ];
 
-export default RunningCalc;
+export default connect(null, {updateChosenCalculator})(RunningCalc);
