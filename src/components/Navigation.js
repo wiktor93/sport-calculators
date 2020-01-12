@@ -26,14 +26,14 @@ const Navigation = ({chosenCalculator}) => {
           </NavLink>
         </li>
 
-        {calculatorName ? (
+        {calculatorName && (
           <li>
             <span>> </span>
             <NavLink className={styles.item} to={routePaths[calculatorName]}>
               {calculatorName}
             </NavLink>
           </li>
-        ) : null}
+        )}
       </ul>
     </nav>
   );

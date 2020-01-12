@@ -5,12 +5,12 @@ import {connect} from "react-redux";
 import {updateChosenCalculator} from "../actions/index";
 
 import CalcPuzzle from "./CalcPuzzle";
-import RunningIcon from "../img/running.svg";
-import SwimmingIcon from "../img/swimming.svg";
-import CyclingIcon from "../img/cycling.svg";
-import GymIcon from "../img/gym.svg";
-import BenchPressIcon from "../img/bench-press.svg";
-import HeartRateIcon from "../img/heart-rate.svg";
+import RunningIcon from "../images/running.svg";
+import SwimmingIcon from "../images/swimming.svg";
+import CyclingIcon from "../images/cycling.svg";
+import GymIcon from "../images/gym.svg";
+import BenchPressIcon from "../images/bench-press.svg";
+import HeartRateIcon from "../images/heart-rate.svg";
 import styles from "../styles/Categories.module.scss";
 
 const Categories = ({updateChosenCalculator}) => {
