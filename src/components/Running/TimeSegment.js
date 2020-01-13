@@ -1,119 +1,112 @@
 import React, {useEffect, useState} from "react";
 import Select from "react-select";
 
-import {raceOptions, defaultInputValues} from "../../assets/data";
+import {raceOptions} from "../../assets/data";
 import Button from "../Button";
 import Input from "../Input";
 import Unit from "../Unit";
 import styles from "../../styles/RunningCalc.module.scss";
 
 const TimeSegment = () => {
-  const [inputValues, setInputValue] = useState(defaultInputValues);
+  const [paceMinutes, setPaceMinutes] = useState("");
+  const [paceSeconds, setPaceSeconds] = useState("");
+  const [kilometers, setKilometers] = useState("");
+  const [meters, setMeters] = useState("");
+  const [selected, setSelected] = useState("Select...");
+  const [time, setTime] = useState(0);
 
-  const handleInputs = (e, obj = {}) => {
-    setInputValue({...inputValues, [e.target.name]: e.target.value, ...obj});
+  let hours = Math.floor(time / 3600),
+    minutes = Math.floor((time / 60) % 60),
+    seconds = Math.floor(time % 60);
+
+  const renderTimeResult = () => {
+    return time ? (
+      <p>
+        <span>{hours > 9 ? hours : `0${hours}`}</span>:
+        <span>{minutes > 9 ? minutes : `0${minutes}`}</span>:
+        <span>{seconds > 9 ? seconds : `0${seconds}`}</span>
+      </p>
+    ) : (
+      <p>
+        <span>--</span>:<span>--</span>:<span>--</span>
+      </p>
+    );
   };
 
   useEffect(() => {
-    // prettier-ignore
-    const { kilometers, meters, hours, minutes, seconds,speed } = inputValues;
+    const speed = (1 / (+paceMinutes * 60 + +paceSeconds)) * 3600;
+    const distance = +kilometers + +meters / 1000;
+    const newTime = (distance / speed) * 3600;
 
-    const distance = +kilometers * 1000 + +meters;
-    const time = +hours * 3600 + +minutes * 60 + +seconds;
-    const paceTime = Math.floor((+time * 1000) / distance);
-    const avgSpeed =
-      distance && time ? (distance / 1000 / (time / 3600)).toFixed(2) : 0;
+    if (newTime !== time) setTime(newTime);
+  }, [paceMinutes, paceSeconds, kilometers, meters, time]);
 
-    if (speed !== avgSpeed) {
-      setInputValue({
-        ...inputValues,
-        speed: avgSpeed,
-        paceMinutes: paceTime
-          ? Math.floor(paceTime / 60)
-          : defaultInputValues.paceMinutes,
-        paceSeconds: paceTime
-          ? paceTime % 60 < 10
-            ? `0${Math.floor(paceTime % 60)}`
-            : Math.floor(paceTime % 60)
-          : defaultInputValues.paceSeconds
-      });
-    }
-  }, [inputValues]);
   return (
     <>
       {/* TIME SEGMENT CALCULATOR */}
       <section className={styles.calcWrap}>
         <h3>Time Segment Calculator</h3>
         <p className={styles.note}>
-          With help of this calculator, you can check what is the minimum time
-          that you should overcome selected distance (e.g. stadion loop).
+          With this calculator, you can check what is the minimum time that you
+          should overcome selected distance (e.g. stadion loop).
         </p>
         <form>
+          {/* Pace */}
           <div className={styles.inputGroup}>
             <label>Pace: </label>
             <Input
-              name="kilometers"
-              value={inputValues.kilometers}
-              onChange={e =>
-                handleInputs(e, {selected: defaultInputValues.selected})
-              }
-            />
-            <Unit>min</Unit>
-            <Input
-              name="meters"
-              value={inputValues.meters}
-              onChange={e =>
-                handleInputs(e, {selected: defaultInputValues.selected})
-              }
-            />
-            <Unit>sec</Unit>
-            <Select
-              className={styles.select}
-              options={raceOptions}
-              isSearchable={false}
-              placeholder={inputValues.selected}
-              value={inputValues.selected}
-              onChange={e =>
-                setInputValue({
-                  ...inputValues,
-                  kilometers: e.value,
-                  meters: e.m,
-                  selected: e.label
-                })
-              }
-            />
-          </div>
-          <div className={styles.inputGroup}>
-            <label>Distance: </label>
-            <Input
-              name="hours"
-              value={inputValues.hours}
-              onChange={e => handleInputs(e)}
-            />
-            <Unit>hrs</Unit>
-            <Input
               name="minutes"
-              value={inputValues.minutes}
-              onChange={e => handleInputs(e)}
+              value={paceMinutes}
+              onChange={e => setPaceMinutes(e.target.value)}
             />
             <Unit>min</Unit>
             <Input
               name="seconds"
-              value={inputValues.seconds}
-              onChange={e => handleInputs(e)}
+              value={paceSeconds}
+              onChange={e => setPaceSeconds(e.target.value)}
             />
             <Unit>sec</Unit>
           </div>
+
+          {/* Distance */}
+          <div className={styles.inputGroup}>
+            <label>Distance (type or select): </label>
+            <Input
+              name="kilometers"
+              value={kilometers}
+              onChange={e => {
+                setKilometers(e.target.value);
+                setSelected("Select...");
+              }}
+            />
+            <Unit>km</Unit>
+            <Input
+              name="meters"
+              value={meters}
+              onChange={e => {
+                setMeters(e.target.value);
+                setSelected("Select...");
+              }}
+            />
+            <Unit>m</Unit>
+            <Select
+              className={styles.select}
+              options={raceOptions}
+              isSearchable={false}
+              placeholder={selected}
+              value={selected}
+              onChange={e => {
+                setKilometers(e.value);
+                setMeters(e.m);
+                setSelected(e.label);
+              }}
+            />
+          </div>
+
           <div className={styles.resultsContainer}>
             <div>
               <h4>Time</h4>
-              <div className={styles.result}>
-                <p>
-                  <span>{inputValues.paceMinutes}</span>:
-                  <span>{inputValues.paceSeconds}</span>:
-                  <span>{inputValues.paceSeconds}</span>
-                </p>
-              </div>
+              <div className={styles.result}>{renderTimeResult()}</div>
             </div>
           </div>
 
@@ -121,7 +114,11 @@ const TimeSegment = () => {
             <Button
               onClick={e => {
                 e.preventDefault();
-                setInputValue({...defaultInputValues});
+                setPaceMinutes("");
+                setPaceSeconds("");
+                setKilometers("");
+                setMeters("");
+                setSelected("Select...");
               }}
             >
               Reset <i className="fas fa-undo-alt"></i>

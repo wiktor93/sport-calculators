@@ -49,6 +49,7 @@ const RunningPace = () => {
           and pace to achieve your goal.
         </p>
         <form>
+          {/* Distance */}
           <div className={styles.inputGroup}>
             <label>Distance (type or select): </label>
             <Input
@@ -83,6 +84,8 @@ const RunningPace = () => {
               }
             />
           </div>
+
+          {/* Time */}
           <div className={styles.inputGroup}>
             <label>Time (your planned result): </label>
             <Input
@@ -104,6 +107,7 @@ const RunningPace = () => {
             />
             <Unit>sec</Unit>
           </div>
+
           <div className={styles.resultsContainer}>
             <div>
               <h4>Pace</h4>

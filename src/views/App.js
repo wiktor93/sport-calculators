@@ -2,10 +2,11 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import Navigation from "../components/Navigation";
-import Categories from "../components/Categories";
+import Categories from "./Categories";
 import RunnnigCalc from "./RunnigCalc";
 import SwimmingCalc from "./SwimmingCalc";
 import CyclingCalc from "./CyclingCalc";
+import GymCalc from "./GymCalc";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/running-calc" component={RunnnigCalc} />
           <Route path="/swimming-calc" component={SwimmingCalc} />
           <Route path="/cycling-calc" component={CyclingCalc} />
+          <Route path="/gym-calc" component={GymCalc} />
         </Switch>
       </div>
     </BrowserRouter>

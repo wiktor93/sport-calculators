@@ -7,7 +7,9 @@ import styles from "../styles/Navigation.module.scss";
 const routePaths = {
   Running: "/running-calc",
   Swimming: "/swimming-calc",
-  Cycling: "/cycling-calc"
+  Cycling: "/cycling-calc",
+  Gym: "/gym-calc",
+  Health: "/health-calc"
 };
 
 const Navigation = ({chosenCalculator}) => {
