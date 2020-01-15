@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
-import Select from "react-select";
+import React, {useState, useEffect} from 'react';
+import Select from 'react-select';
 
-import {raceOptions, defaultInputValues} from "../../assets/data";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Unit from "../../components/Unit";
-import styles from "../../styles/RunningCalc.module.scss";
+import {runningRaceOptions, defaultInputValues} from '../../assets/data';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import Unit from '../../components/Unit';
+import styles from '../../styles/RunningCalc.module.scss';
 
 const RunningPace = () => {
   const [inputValues, setInputValue] = useState(defaultInputValues);
@@ -70,7 +70,7 @@ const RunningPace = () => {
             <Unit>m</Unit>
             <Select
               className={styles.select}
-              options={raceOptions}
+              options={runningRaceOptions}
               isSearchable={false}
               placeholder={inputValues.selected}
               value={inputValues.selected}
@@ -122,7 +122,7 @@ const RunningPace = () => {
               <h4>Speed</h4>
               <div className={styles.result}>
                 <p>
-                  <span>{inputValues.speed ? inputValues.speed : "--"}</span>{" "}
+                  <span>{inputValues.speed ? inputValues.speed : '--'}</span>{' '}
                   km/h
                 </p>
               </div>

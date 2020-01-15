@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react";
-import Select from "react-select";
+import React, {useEffect, useState} from 'react';
+import Select from 'react-select';
 
-import {raceOptions} from "../../assets/data";
-import Button from "../Button";
-import Input from "../Input";
-import Unit from "../Unit";
-import styles from "../../styles/RunningCalc.module.scss";
+import {runningRaceOptions} from '../../assets/data';
+import Button from '../Button';
+import Input from '../Input';
+import Unit from '../Unit';
+import styles from '../../styles/RunningCalc.module.scss';
 
 const TimeSegment = () => {
-  const [paceMinutes, setPaceMinutes] = useState("");
-  const [paceSeconds, setPaceSeconds] = useState("");
-  const [kilometers, setKilometers] = useState("");
-  const [meters, setMeters] = useState("");
-  const [selected, setSelected] = useState("Select...");
+  const [paceMinutes, setPaceMinutes] = useState('');
+  const [paceSeconds, setPaceSeconds] = useState('');
+  const [kilometers, setKilometers] = useState('');
+  const [meters, setMeters] = useState('');
+  const [selected, setSelected] = useState('Select...');
   const [time, setTime] = useState(0);
 
   let hours = Math.floor(time / 3600),
@@ -76,7 +76,7 @@ const TimeSegment = () => {
               value={kilometers}
               onChange={e => {
                 setKilometers(e.target.value);
-                setSelected("Select...");
+                setSelected('Select...');
               }}
             />
             <Unit>km</Unit>
@@ -85,13 +85,13 @@ const TimeSegment = () => {
               value={meters}
               onChange={e => {
                 setMeters(e.target.value);
-                setSelected("Select...");
+                setSelected('Select...');
               }}
             />
             <Unit>m</Unit>
             <Select
               className={styles.select}
-              options={raceOptions}
+              options={runningRaceOptions}
               isSearchable={false}
               placeholder={selected}
               value={selected}
@@ -114,11 +114,11 @@ const TimeSegment = () => {
             <Button
               onClick={e => {
                 e.preventDefault();
-                setPaceMinutes("");
-                setPaceSeconds("");
-                setKilometers("");
-                setMeters("");
-                setSelected("Select...");
+                setPaceMinutes('');
+                setPaceSeconds('');
+                setKilometers('');
+                setMeters('');
+                setSelected('Select...');
               }}
             >
               Reset <i className="fas fa-undo-alt"></i>

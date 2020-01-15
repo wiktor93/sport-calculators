@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import {connect} from 'react-redux';
 
-const SwimmingCalc = () => {
-  return <div>Swimming Calc</div>;
+import {updateChosenCalculator} from '../actions/index';
+import SwimmingPace from '../components/Swimming/SwimmingPace';
+
+const SwimmingCalc = ({updateChosenCalculator}) => {
+  updateChosenCalculator('Swimming');
+  return <SwimmingPace />;
 };
 
-export default SwimmingCalc;
+export default connect(null, {updateChosenCalculator})(SwimmingCalc);

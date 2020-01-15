@@ -1,16 +1,16 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-import {connect} from "react-redux";
-import {updateChosenCalculator} from "../actions/index";
+import {connect} from 'react-redux';
+import {updateChosenCalculator} from '../actions/index';
 
-import CalcPuzzle from "../components/CalcPuzzle";
-import RunningIcon from "../images/running.svg";
-import SwimmingIcon from "../images/swimming.svg";
-import CyclingIcon from "../images/cycling.svg";
-import GymIcon from "../images/gym.svg";
-import HeartRateIcon from "../images/heart-rate.svg";
-import styles from "../styles/Categories.module.scss";
+import CalcPuzzle from '../components/CalcPuzzle';
+import RunningIcon from '../assets/images/running.svg';
+import SwimmingIcon from '../assets/images/swimming.svg';
+import CyclingIcon from '../assets/images/cycling.svg';
+import GymIcon from '../assets/images/gym.svg';
+import HeartRateIcon from '../assets/images/heart-rate.svg';
+import styles from '../styles/Categories.module.scss';
 
 const Categories = ({updateChosenCalculator}) => {
   updateChosenCalculator();
@@ -22,11 +22,11 @@ const Categories = ({updateChosenCalculator}) => {
         </CalcPuzzle>
       </Link>
 
-      {/* <Link to="/swimming-calc"> */}
-      <CalcPuzzle icon={SwimmingIcon} calcQ={0}>
-        Swimming
-      </CalcPuzzle>
-      {/* </Link> */}
+      <Link to="/swimming-calc">
+        <CalcPuzzle icon={SwimmingIcon} calcQ={1}>
+          Swimming
+        </CalcPuzzle>
+      </Link>
       {/* <Link to="/cycling-calc"> */}
       <CalcPuzzle icon={CyclingIcon} calcQ={0}>
         Cycling
@@ -40,6 +40,7 @@ const Categories = ({updateChosenCalculator}) => {
       </Link>
 
       <CalcPuzzle icon={HeartRateIcon}>Health</CalcPuzzle>
+      <CalcPuzzle empty></CalcPuzzle>
     </div>
   );
 };

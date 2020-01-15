@@ -1,11 +1,11 @@
-import React from "react";
-import {connect} from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import OneRepMax from "../components/Gym/OneRepMax";
-import {updateChosenCalculator} from "../actions/index";
+import OneRepMax from '../components/Gym/OneRepMax';
+import { updateChosenCalculator } from '../actions/index';
 
-const GymCalc = ({updateChosenCalculator}) => {
-  updateChosenCalculator("Gym");
+const GymCalc = ({ updateChosenCalculator }) => {
+  updateChosenCalculator('Gym');
 
   return (
     <>
@@ -14,4 +14,4 @@ const GymCalc = ({updateChosenCalculator}) => {
   );
 };
 
-export default connect(null, {updateChosenCalculator})(GymCalc);
+export default connect(null, { updateChosenCalculator })(GymCalc);
