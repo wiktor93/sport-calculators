@@ -107,7 +107,6 @@ const RunningPace = () => {
             />
             <Unit>sec</Unit>
           </div>
-
           <div className={styles.resultsContainer}>
             <div>
               <h4>Pace</h4>
