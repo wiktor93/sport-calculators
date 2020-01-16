@@ -7,6 +7,7 @@ import RunnnigCalc from './RunnigCalc';
 import SwimmingCalc from './SwimmingCalc';
 import CyclingCalc from './CyclingCalc';
 import GymCalc from './GymCalc';
+import HealthCalc from './HealthCalc';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/swimming-calc" component={SwimmingCalc} />
           <Route path="/cycling-calc" component={CyclingCalc} />
           <Route path="/gym-calc" component={GymCalc} />
+          <Route path="/health-calc" component={HealthCalc} />
         </Switch>
       </div>
     </BrowserRouter>

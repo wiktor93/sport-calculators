@@ -5,7 +5,7 @@ import {swimmingRaceOptions} from '../../assets/data';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Unit from '../../components/Unit';
-import styles from '../../styles/RunningCalc.module.scss';
+import styles from '../../styles/Calc.module.scss';
 
 const SwimmingPace = () => {
   const [distance, setDistance] = useState('');

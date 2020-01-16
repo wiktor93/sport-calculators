@@ -5,7 +5,7 @@ import {runningRaceOptions} from '../../assets/data';
 import Button from '../Button';
 import Input from '../Input';
 import Unit from '../Unit';
-import styles from '../../styles/RunningCalc.module.scss';
+import styles from '../../styles/Calc.module.scss';
 
 const TimeSegment = () => {
   const [paceMinutes, setPaceMinutes] = useState('');

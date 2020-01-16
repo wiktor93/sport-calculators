@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Input from '../Input';
 import Unit from '../Unit';
 import Button from '../Button';
-import styles from '../../styles/RunningCalc.module.scss';
+import styles from '../../styles/Calc.module.scss';
 
 const OneRepMax = () => {
   const [weight, setWeight] = useState('');

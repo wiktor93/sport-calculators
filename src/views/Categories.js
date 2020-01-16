@@ -27,6 +27,7 @@ const Categories = ({updateChosenCalculator}) => {
           Swimming
         </CalcPuzzle>
       </Link>
+
       {/* <Link to="/cycling-calc"> */}
       <CalcPuzzle icon={CyclingIcon} calcQ={0}>
         Cycling
@@ -38,8 +39,12 @@ const Categories = ({updateChosenCalculator}) => {
           Gym
         </CalcPuzzle>
       </Link>
+      <Link to="/health-calc">
+        <CalcPuzzle icon={HeartRateIcon} calcQ={1}>
+          Health
+        </CalcPuzzle>
+      </Link>
 
-      <CalcPuzzle icon={HeartRateIcon}>Health</CalcPuzzle>
       <CalcPuzzle empty></CalcPuzzle>
     </div>
   );
