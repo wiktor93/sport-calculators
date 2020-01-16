@@ -11,7 +11,7 @@ import HealthCalc from './HealthCalc';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="sport-calculators">
       <div className="wrap">
         <h1>Sport calculators</h1>
         <Navigation />
