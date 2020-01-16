@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/sport-calculators/static/css/main.262a1f4e.chunk.css",
+    "main.js": "/sport-calculators/static/js/main.ca34074c.chunk.js",
+    "main.js.map": "/sport-calculators/static/js/main.ca34074c.chunk.js.map",
+    "runtime-main.js": "/sport-calculators/static/js/runtime-main.a030a601.js",
+    "runtime-main.js.map": "/sport-calculators/static/js/runtime-main.a030a601.js.map",
+    "static/js/2.99787338.chunk.js": "/sport-calculators/static/js/2.99787338.chunk.js",
+    "static/js/2.99787338.chunk.js.map": "/sport-calculators/static/js/2.99787338.chunk.js.map",
+    "index.html": "/sport-calculators/index.html",
+    "precache-manifest.c2cdf99acf9fdbc72936137b411f62c7.js": "/sport-calculators/precache-manifest.c2cdf99acf9fdbc72936137b411f62c7.js",
+    "service-worker.js": "/sport-calculators/service-worker.js",
+    "static/css/main.262a1f4e.chunk.css.map": "/sport-calculators/static/css/main.262a1f4e.chunk.css.map",
+    "static/js/2.99787338.chunk.js.LICENSE": "/sport-calculators/static/js/2.99787338.chunk.js.LICENSE",
+    "static/media/cycling.svg": "/sport-calculators/static/media/cycling.0c155670.svg",
+    "static/media/gym.svg": "/sport-calculators/static/media/gym.4bf72df0.svg",
+    "static/media/heart-rate.svg": "/sport-calculators/static/media/heart-rate.efc2fd96.svg",
+    "static/media/running.svg": "/sport-calculators/static/media/running.ad17a909.svg",
+    "static/media/swimming.svg": "/sport-calculators/static/media/swimming.e7c181a4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a030a601.js",
+    "static/js/2.99787338.chunk.js",
+    "static/css/main.262a1f4e.chunk.css",
+    "static/js/main.ca34074c.chunk.js"
+  ]
+}
