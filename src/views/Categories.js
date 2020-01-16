@@ -34,7 +34,7 @@ const Categories = ({updateChosenCalculator}) => {
       {/* </Link> */}
 
       <Link to="/gym-calc">
-        <CalcPuzzle icon={GymIcon} calcQ={0}>
+        <CalcPuzzle icon={GymIcon} calcQ={1}>
           Gym
         </CalcPuzzle>
       </Link>
