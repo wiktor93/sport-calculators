@@ -8,4 +8,4 @@ Sport calculators for diffetend disciplines.
 * Sass
 
 ## Demo link:
-...
+https://wiktor93.github.io/sport-calculators/
