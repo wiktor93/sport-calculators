@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/sport-calculators/static/css/main.262a1f4e.chunk.css",
-    "main.js": "/sport-calculators/static/js/main.f4f46112.chunk.js",
-    "main.js.map": "/sport-calculators/static/js/main.f4f46112.chunk.js.map",
+    "main.js": "/sport-calculators/static/js/main.57e30122.chunk.js",
+    "main.js.map": "/sport-calculators/static/js/main.57e30122.chunk.js.map",
     "runtime-main.js": "/sport-calculators/static/js/runtime-main.a030a601.js",
     "runtime-main.js.map": "/sport-calculators/static/js/runtime-main.a030a601.js.map",
-    "static/js/2.99787338.chunk.js": "/sport-calculators/static/js/2.99787338.chunk.js",
-    "static/js/2.99787338.chunk.js.map": "/sport-calculators/static/js/2.99787338.chunk.js.map",
+    "static/js/2.b06f392b.chunk.js": "/sport-calculators/static/js/2.b06f392b.chunk.js",
+    "static/js/2.b06f392b.chunk.js.map": "/sport-calculators/static/js/2.b06f392b.chunk.js.map",
     "index.html": "/sport-calculators/index.html",
-    "precache-manifest.2cef9d61f7ee765644213b0b530ab741.js": "/sport-calculators/precache-manifest.2cef9d61f7ee765644213b0b530ab741.js",
+    "precache-manifest.86d145dbc6aa61621523fbd9139f3e3a.js": "/sport-calculators/precache-manifest.86d145dbc6aa61621523fbd9139f3e3a.js",
     "service-worker.js": "/sport-calculators/service-worker.js",
     "static/css/main.262a1f4e.chunk.css.map": "/sport-calculators/static/css/main.262a1f4e.chunk.css.map",
-    "static/js/2.99787338.chunk.js.LICENSE": "/sport-calculators/static/js/2.99787338.chunk.js.LICENSE",
+    "static/js/2.b06f392b.chunk.js.LICENSE": "/sport-calculators/static/js/2.b06f392b.chunk.js.LICENSE",
     "static/media/cycling.svg": "/sport-calculators/static/media/cycling.0c155670.svg",
     "static/media/gym.svg": "/sport-calculators/static/media/gym.4bf72df0.svg",
     "static/media/heart-rate.svg": "/sport-calculators/static/media/heart-rate.efc2fd96.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a030a601.js",
-    "static/js/2.99787338.chunk.js",
+    "static/js/2.b06f392b.chunk.js",
     "static/css/main.262a1f4e.chunk.css",
-    "static/js/main.f4f46112.chunk.js"
+    "static/js/main.57e30122.chunk.js"
   ]
 }
