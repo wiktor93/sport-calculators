@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -13,12 +13,6 @@ const routePaths = {
 };
 
 const Navigation = ({chosenCalculator}) => {
-  const [calculatorName, setCalculatorName] = useState();
-
-  useEffect(() => {
-    setCalculatorName(chosenCalculator);
-  }, [chosenCalculator]);
-
   return (
     <nav className={styles.nav}>
       <ul>
@@ -28,11 +22,11 @@ const Navigation = ({chosenCalculator}) => {
           </NavLink>
         </li>
 
-        {calculatorName && (
+        {chosenCalculator && (
           <li>
             <span>> </span>
-            <NavLink className={styles.item} to={routePaths[calculatorName]}>
-              {calculatorName}
+            <NavLink className={styles.item} to={routePaths[chosenCalculator]}>
+              {chosenCalculator}
             </NavLink>
           </li>
         )}
@@ -41,9 +35,9 @@ const Navigation = ({chosenCalculator}) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ({chosenCalculator}) => {
   return {
-    chosenCalculator: state.chosenCalculator
+    chosenCalculator
   };
 };
 

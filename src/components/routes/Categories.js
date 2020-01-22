@@ -12,40 +12,26 @@ import GymIcon from '../../assets/images/gym.svg';
 import HeartRateIcon from '../../assets/images/heart-rate.svg';
 import styles from '../../styles/Categories.module.scss';
 
+const routes = [
+  {name: 'Running', path: '/running-calc', calcQ: 2, icon: RunningIcon},
+  {name: 'Swimming', path: '/swimming-calc', calcQ: 1, icon: SwimmingIcon},
+  {name: 'Cycling', path: '', calcQ: 0, icon: CyclingIcon},
+  {name: 'Gym', path: '/gym-calc', calcQ: 1, icon: GymIcon},
+  {name: 'Health', path: '/health-calc', calcQ: 1, icon: HeartRateIcon},
+  {name: '', path: '', calcQ: '', icon: ''}
+];
+
 const Categories = ({updateChosenCalculator}) => {
   updateChosenCalculator();
   return (
     <div className={styles.categories}>
-      <Link to="/running-calc">
-        <CalcPuzzle icon={RunningIcon} calcQ={2}>
-          Running
-        </CalcPuzzle>
-      </Link>
-
-      <Link to="/swimming-calc">
-        <CalcPuzzle icon={SwimmingIcon} calcQ={1}>
-          Swimming
-        </CalcPuzzle>
-      </Link>
-
-      {/* <Link to="/cycling-calc"> */}
-      <CalcPuzzle icon={CyclingIcon} calcQ={0}>
-        Cycling
-      </CalcPuzzle>
-      {/* </Link> */}
-
-      <Link to="/gym-calc">
-        <CalcPuzzle icon={GymIcon} calcQ={1}>
-          Gym
-        </CalcPuzzle>
-      </Link>
-      <Link to="/health-calc">
-        <CalcPuzzle icon={HeartRateIcon} calcQ={1}>
-          Health
-        </CalcPuzzle>
-      </Link>
-
-      <CalcPuzzle empty></CalcPuzzle>
+      {routes.map(route => (
+        <Link to={route.path}>
+          <CalcPuzzle icon={route.icon} calcQ={route.calcQ}>
+            {route.name}
+          </CalcPuzzle>
+        </Link>
+      ))}
     </div>
   );
 };
