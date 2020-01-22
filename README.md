@@ -1,6 +1,6 @@
 ## Sport Calculators App
 
-Sport calculators for diffetend disciplines.
+Sport calculators for different disciplines.
 
 ## Used technologies and libraries:
 * React, Hooks
