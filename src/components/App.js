@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import Navigation from '../components/Navigation';
-import Categories from './Categories';
-import RunnnigCalc from './RunnigCalc';
-import SwimmingCalc from './SwimmingCalc';
-import CyclingCalc from './CyclingCalc';
-import GymCalc from './GymCalc';
-import HealthCalc from './HealthCalc';
+import Navigation from '../components/molecules/Navigation';
+import Categories from '../components/routes/Categories';
+import RunnnigCalc from '../components/routes/RunnigCalc';
+import SwimmingCalc from '../components/routes/SwimmingCalc';
+import CyclingCalc from '../components/routes/CyclingCalc';
+import GymCalc from '../components/routes/GymCalc';
+import HealthCalc from '../components/routes/HealthCalc';
 
 function App() {
   return (

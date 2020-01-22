@@ -2,15 +2,15 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
-import {updateChosenCalculator} from '../actions/index';
+import {updateChosenCalculator} from '../../actions/index';
 
-import CalcPuzzle from '../components/CalcPuzzle';
-import RunningIcon from '../assets/images/running.svg';
-import SwimmingIcon from '../assets/images/swimming.svg';
-import CyclingIcon from '../assets/images/cycling.svg';
-import GymIcon from '../assets/images/gym.svg';
-import HeartRateIcon from '../assets/images/heart-rate.svg';
-import styles from '../styles/Categories.module.scss';
+import CalcPuzzle from '../molecules/CalcPuzzle';
+import RunningIcon from '../../assets/images/running.svg';
+import SwimmingIcon from '../../assets/images/swimming.svg';
+import CyclingIcon from '../../assets/images/cycling.svg';
+import GymIcon from '../../assets/images/gym.svg';
+import HeartRateIcon from '../../assets/images/heart-rate.svg';
+import styles from '../../styles/Categories.module.scss';
 
 const Categories = ({updateChosenCalculator}) => {
   updateChosenCalculator();

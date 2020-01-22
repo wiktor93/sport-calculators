@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from "react";
-import {NavLink} from "react-router-dom";
-import {connect} from "react-redux";
+import React, {useState, useEffect} from 'react';
+import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import styles from "../styles/Navigation.module.scss";
+import styles from '../../styles/Navigation.module.scss';
 
 const routePaths = {
-  Running: "/running-calc",
-  Swimming: "/swimming-calc",
-  Cycling: "/cycling-calc",
-  Gym: "/gym-calc",
-  Health: "/health-calc"
+  Running: '/running-calc',
+  Swimming: '/swimming-calc',
+  Cycling: '/cycling-calc',
+  Gym: '/gym-calc',
+  Health: '/health-calc'
 };
 
 const Navigation = ({chosenCalculator}) => {

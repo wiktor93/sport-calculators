@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import Select from 'react-select';
 
 import {runningRaceOptions} from '../../assets/data';
-import Button from '../Button';
-import Input from '../Input';
-import Unit from '../Unit';
+import Button from '../atoms/Button';
+import Input from '../atoms/Input';
+import Unit from '../atoms/Unit';
 import styles from '../../styles/Calc.module.scss';
 
 const TimeSegment = () => {

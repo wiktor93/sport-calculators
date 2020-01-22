@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import Select from 'react-select';
 
 import {swimmingRaceOptions} from '../../assets/data';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
-import Unit from '../../components/Unit';
+import Button from '../atoms/Button';
+import Input from '../atoms/Input';
+import Unit from '../atoms/Unit';
 import styles from '../../styles/Calc.module.scss';
 
 const SwimmingPace = () => {
